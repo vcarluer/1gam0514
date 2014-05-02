@@ -45,6 +45,7 @@ In game
     * boss
     * always
     * ?
+    * Sponsorship (kongregate), no other adds
 * Continue
     * Buy next chapter
     * One life
@@ -53,28 +54,41 @@ In game
     * items look
     * HUD
     * Sounds / music
+    * Give what you model
 * Power / game advantage
-    * Items
+    * Items / level up
     * Stats
     * Skills
     * money
-    * Boost
+    * Boost / premium / double coins...
+    * club
     * Consumables
     * Virtual currency
     * ...
+* Rental
 * DLC
     * New scenario arc, chapter...
 Out game
 ------
+* Owned portal
 * Advertising banner
 * Premium access no advertising
 * Monthly subscription, first month free... Not really good for an adventure game
 * Sell assets
-* Fan t-shirt sell
+* Fan t-shirt sell / mouse pads...
 * donation
-* Making off, goodies: soundtrack, art, code, interview...
+* Making off, goodies: soundtrack, art, code, interview, wallpaper...
 * Participate
     * Vote for next
     * Add you idea
     * Add your character
-* Sell game: fgl.com
+* Licensing / Sell game: fgl.com
+* Level / adventure editor
+* Crowfunding / Ransom / Patronage: wait minimal amount to release / refund of not
+Resources
+-------
+http://www.gamasutra.com/view/feature/132317/wheres_the_cash_for_flash.php?page=2
+http://evolutionlive.blogspot.fr/2009/06/ten-ways-to-monetize-your-flash-game.html
+http://www.gamesindustry.biz/articles/2012-08-25-how-to-monetize-of-free-to-play-games
+http://gulyani.com/best-ways-to-monetize-your-mobile-apps-or-games/
+http://blog.soom.la/2013/07/42-ways-to-monetize-your-mobile-game.html

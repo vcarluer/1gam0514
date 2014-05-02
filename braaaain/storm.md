@@ -39,42 +39,42 @@ Where / How
 Hypothesis: free game
 In game
 ------
-Advertise
-    start
-    end
-    boss
-    always
-    ?
-Continue
-    Buy next chapter
-    One life
-Customize
-    Character look
-    items look
-    HUD
-    Sounds / music
-Power / game advantage
-    Items
-    Stats
-    Skills
-    money
-    Boost
-    Consumables
-    Virtual currency
-    ...
-DLC
-    New scenario arc, chapter...
+* Advertise
+    * start
+    * end
+    * boss
+    * always
+    * ?
+* Continue
+    * Buy next chapter
+    * One life
+* Customize
+    * Character look
+    * items look
+    * HUD
+    * Sounds / music
+* Power / game advantage
+    * Items
+    * Stats
+    * Skills
+    * money
+    * Boost
+    * Consumables
+    * Virtual currency
+    * ...
+* DLC
+    * New scenario arc, chapter...
 Out game
 ------
-Advertising banner
-Premium access no advertising
-Monthly subscription, first month free... Not really good for an adventure game
-Sell assets
-Fan t-shirt sell
-donation
-Making off, goodies: soundtrack, art, code, interview...
-Participate
-    Vote for next
-    Add you idea
-    Add your character
-Sell game: fgl.com
+* Advertising banner
+* Premium access no advertising
+* Monthly subscription, first month free... Not really good for an adventure game
+* Sell assets
+* Fan t-shirt sell
+* donation
+* Making off, goodies: soundtrack, art, code, interview...
+* Participate
+    * Vote for next
+    * Add you idea
+    * Add your character
+* Sell game: fgl.com

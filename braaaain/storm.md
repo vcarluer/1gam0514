@@ -36,7 +36,10 @@ Be proud to be pro. Good luck!
 
 Where / How
 =======
-Hypothesis: free game
+Hypothesis:
+free game
+adventure game
+<= preferred options
 In game
 ------
 * Advertise
@@ -45,16 +48,16 @@ In game
     * boss
     * always
     * ?
-    * Sponsorship (kongregate), no other adds
+    * Sponsorship (kongregate), no other adds at start  <=
 * Continue
     * Buy next chapter
     * One life
-* Customize
+* Customize <=
     * Character look
     * items look
     * HUD
     * Sounds / music
-    * Give what you model
+    * Give what you model <=
 * Power / game advantage
     * Items / level up
     * Stats
@@ -67,28 +70,80 @@ In game
     * ...
 * Rental
 * DLC
-    * New scenario arc, chapter...
+    * New // scenario arc, chapter... <=
 Out game
 ------
-* Owned portal
-* Advertising banner
+* Owned portal <=
+* Advertising banner <=
 * Premium access no advertising
 * Monthly subscription, first month free... Not really good for an adventure game
 * Sell assets
-* Fan t-shirt sell / mouse pads...
+* Fan t-shirt sell / mouse pads... <=
 * donation
 * Making off, goodies: soundtrack, art, code, interview, wallpaper...
 * Participate
     * Vote for next
     * Add you idea
     * Add your character
-* Licensing / Sell game: fgl.com
+* Licensing / Sell game: fgl.com <=
 * Level / adventure editor
 * Crowfunding / Ransom / Patronage: wait minimal amount to release / refund of not
+* Fund next chapter
 Resources
 -------
+Most important article:
+http://www.photonstorm.com/game-development/business/insert-coin-to-continue-the-html5-game-sponsorship-market
+
+others
 http://www.gamasutra.com/view/feature/132317/wheres_the_cash_for_flash.php?page=2
 http://evolutionlive.blogspot.fr/2009/06/ten-ways-to-monetize-your-flash-game.html
 http://www.gamesindustry.biz/articles/2012-08-25-how-to-monetize-of-free-to-play-games
 http://gulyani.com/best-ways-to-monetize-your-mobile-apps-or-games/
 http://blog.soom.la/2013/07/42-ways-to-monetize-your-mobile-game.html
+
+https://www.fgl.com/view_library.php
+https://www.fgl.com/other/html5opportunities/
+
+http://tools.appbackr.com/
+http://tools.appbackr.com/porting-html5-apps-tizen-guide/
+
+
+https://developer.tizen.org/fr
+
+http://clay.io/
+
+html 5 buyers
+http://www.marketjs.com/
+
+http://www.boostermedia.com/
+
+http://www.softgames.de/
+
+http://www.kimia.mobi/
+
+http://www.minijuegos.com/
+
+http://www.pakap.com/
+
+http://www.neomobile.com/
+
+
+
+key word: mobile browser games
+
+http://www.smashingmagazine.com/2012/10/19/design-your-own-mobile-game/
+
+Extract
+-------
+* Sponsorship (kongregate, armor games, newsground), no other adds at start
+* Customize <=
+    * Character look
+    * items look
+    * HUD
+    * Sounds / music
+    * Give what you model <=
+* Owned portal <=
+* Advertising banner <=
+* Fan t-shirt sell / mouse pads... <=
+* Licensing / Sell game: fgl.com, http://www.marketjs.com/ <=
+* Fund next chapter

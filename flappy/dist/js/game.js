@@ -63,37 +63,66 @@ GameOver.prototype = {
 module.exports = GameOver;
 
 },{}],4:[function(require,module,exports){
-
 'use strict';
 function Menu() {}
 
 Menu.prototype = {
-  preload: function() {
+    preload: function() {
+    },
+    create: function() {
+        // add the background sprite
+        this.background = this.game.add.sprite(0, 0, 'background');
+        // add the ground sprite as a tile
+        // and start scrolling in the negative x direction
+        this.ground = this.game.add.tileSprite(0, 400, 335, 112, 'ground');
+        this.ground.autoScroll(-200, 0);
 
-  },
-  create: function() {
-    var style = { font: '65px Arial', fill: '#ffffff', align: 'center'};
-    this.sprite = this.game.add.sprite(this.game.world.centerX, 138, 'yeoman');
-    this.sprite.anchor.setTo(0.5, 0.5);
+        /** STEP 1 **/
+            // create a group to put the title assets in
+            // so they can be manipulated as a whole
+        this.titleGroup = this.game.add.group();
 
-    this.titleText = this.game.add.text(this.game.world.centerX, 300, '\'Allo, \'Allo!', style);
-    this.titleText.anchor.setTo(0.5, 0.5);
+        /** STEP 2 **/
+            // create the title sprite
+            // and add it to the group
+        this.title = this.game.add.sprite(0,0,'title');
+        this.titleGroup.add(this.title);
 
-    this.instructionsText = this.game.add.text(this.game.world.centerX, 400, 'Click anywhere to play "Click The Yeoman Logo"', { font: '16px Arial', fill: '#ffffff', align: 'center'});
-    this.instructionsText.anchor.setTo(0.5, 0.5);
+        /** STEP 3 **/
+            // create the bird sprite
+            // and add it to the title group
+        this.bird = this.game.add.sprite(200,5,'bird');
+        this.titleGroup.add(this.bird);
 
-    this.sprite.angle = -20;
-    this.game.add.tween(this.sprite).to({angle: 20}, 1000, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
-  },
-  update: function() {
-    if(this.game.input.activePointer.justPressed()) {
-      this.game.state.start('play');
+        /** STEP 4 **/
+            // add an animation to the bird
+            // and begin the animation
+        this.bird.animations.add('flap');
+        this.bird.animations.play('flap', 12, true);
+
+        /** STEP 5 **/
+            // Set the originating location of the group
+        this.titleGroup.x = 30;
+        this.titleGroup.y = 100;
+
+        /** STEP 6 **/
+            // create an oscillating animation tween for the group
+        this.game.add.tween(this.titleGroup).to({y:115}, 350, Phaser.Easing.Linear.NONE, true, 0, 1000, true);
+
+        // add our start button with a callback
+        this.startButton = this.game.add.button(this.game.width/2, 300, 'startButton', this.startClick, this);
+        this.startButton.anchor.setTo(0.5,0.5);
+
+    },
+    update: function() {
+    },
+    startClick: function() {
+        // start button click handler
+        // start the 'play' state
+        this.game.state.start('play');
     }
-  }
 };
-
 module.exports = Menu;
-
 },{}],5:[function(require,module,exports){
 
   'use strict';
@@ -136,8 +165,12 @@ Preload.prototype = {
 
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
-    this.load.image('yeoman', 'assets/yeoman-logo.png');
+      this.load.image('background', 'assets/background.png');
+      this.load.image('ground', 'assets/ground.png');
+      this.load.image('title', 'assets/title.png');
+      this.load.image('startButton', 'assets/start-button.png');
 
+      this.load.spritesheet('bird', 'assets/bird.png', 34, 24, 3);
   },
   create: function() {
     this.asset.cropEnabled = false;

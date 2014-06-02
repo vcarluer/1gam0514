@@ -15,7 +15,66 @@ window.onload = function () {
 
   game.state.start('boot');
 };
-},{"./states/boot":2,"./states/gameover":3,"./states/menu":4,"./states/play":5,"./states/preload":6}],2:[function(require,module,exports){
+},{"./states/boot":4,"./states/gameover":5,"./states/menu":6,"./states/play":7,"./states/preload":8}],2:[function(require,module,exports){
+'use strict';
+
+var Bird = function(game, x, y, frame) {
+  Phaser.Sprite.call(this, game, x, y, 'bird', frame);
+
+  // initialize your prefab here
+    // set the sprite's anchor to the center
+    this.anchor.setTo(0.5, 0.5);
+
+    // add and play animations
+    this.animations.add('flap');
+    this.animations.play('flap', 12, true);
+
+    this.game.physics.arcade.enableBody(this);
+
+};
+
+Bird.prototype = Object.create(Phaser.Sprite.prototype);
+Bird.prototype.constructor = Bird;
+
+Bird.prototype.update = function() {
+  
+  // write your prefab's specific update code here
+  
+};
+
+module.exports = Bird;
+
+},{}],3:[function(require,module,exports){
+'use strict';
+
+var Ground = function(game, x, y, width, height) {
+    Phaser.TileSprite.call(this, game, x, y, width, height, 'ground');
+
+    // start scrolling our ground
+    this.autoScroll(-200,0);
+
+    // enable physics on the ground sprite
+    // this is needed for collision detection
+    this.game.physics.arcade.enableBody(this);
+
+    // we don't want the ground's body
+    // to be affected by gravity
+    this.body.allowGravity = false;
+    this.body.immovable = true;
+};
+
+Ground.prototype = Object.create(Phaser.TileSprite.prototype);
+Ground.prototype.constructor = Ground;
+
+Ground.prototype.update = function() {
+  
+  // write your prefab's specific update code here
+  
+};
+
+module.exports = Ground;
+
+},{}],4:[function(require,module,exports){
 
 'use strict';
 
@@ -34,7 +93,7 @@ Boot.prototype = {
 
 module.exports = Boot;
 
-},{}],3:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 
 'use strict';
 function GameOver() {}
@@ -62,7 +121,7 @@ GameOver.prototype = {
 };
 module.exports = GameOver;
 
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 function Menu() {}
 
@@ -123,34 +182,36 @@ Menu.prototype = {
     }
 };
 module.exports = Menu;
-},{}],5:[function(require,module,exports){
-
+},{}],7:[function(require,module,exports){
   'use strict';
+
+  var Bird = require('../prefabs/bird');
+  var Ground = require('../prefabs/ground');
+
   function Play() {}
   Play.prototype = {
-    create: function() {
-      this.game.physics.startSystem(Phaser.Physics.ARCADE);
-      this.sprite = this.game.add.sprite(this.game.width/2, this.game.height/2, 'yeoman');
-      this.sprite.inputEnabled = true;
-      
-      this.game.physics.arcade.enable(this.sprite);
-      this.sprite.body.collideWorldBounds = true;
-      this.sprite.body.bounce.setTo(1,1);
-      this.sprite.body.velocity.x = this.game.rnd.integerInRange(-500,500);
-      this.sprite.body.velocity.y = this.game.rnd.integerInRange(-500,500);
+      create: function() {
+          this.game.physics.startSystem(Phaser.Physics.ARCADE);
+          this.game.physics.arcade.gravity.y = 500;
+          // add the background sprite
+          this.background = this.game.add.sprite(0,0,'background');
 
-      this.sprite.events.onInputDown.add(this.clickListener, this);
-    },
-    update: function() {
+          // Create a new bird object
+          this.bird = new Bird(this.game, 100, this.game.height/2);
+          // and add it to the game
+          this.game.add.existing(this.bird);
 
-    },
-    clickListener: function() {
-      this.game.state.start('gameover');
-    }
+          // create and add a new Ground object
+          this.ground = new Ground(this.game, 0, 400, 335, 112);
+          this.game.add.existing(this.ground);
+      },
+      update: function() {
+          this.game.physics.arcade.collide(this.bird, this.ground);
+      }
   };
   
   module.exports = Play;
-},{}],6:[function(require,module,exports){
+},{"../prefabs/bird":2,"../prefabs/ground":3}],8:[function(require,module,exports){
 
 'use strict';
 function Preload() {
@@ -177,7 +238,7 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-      this.game.state.start('menu');
+      this.game.state.start('play');
     }
   },
   onLoadComplete: function() {

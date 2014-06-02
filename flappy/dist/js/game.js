@@ -30,16 +30,23 @@ var Bird = function(game, x, y, frame) {
     this.animations.play('flap', 12, true);
 
     this.game.physics.arcade.enableBody(this);
-
 };
 
 Bird.prototype = Object.create(Phaser.Sprite.prototype);
 Bird.prototype.constructor = Bird;
 
 Bird.prototype.update = function() {
-  
-  // write your prefab's specific update code here
-  
+    // check to see if our angle is less than 90
+    // if it is rotate the bird towards the ground by 2.5 degrees
+    if(this.angle < 90) {
+        this.angle += 2.5;
+    }
+};
+
+Bird.prototype.flap = function() {
+    this.body.velocity.y = -400;
+    // rotate the bird to -40 degrees
+    this.game.add.tween(this).to({angle: -40}, 100).start();
 };
 
 module.exports = Bird;
@@ -192,7 +199,7 @@ module.exports = Menu;
   Play.prototype = {
       create: function() {
           this.game.physics.startSystem(Phaser.Physics.ARCADE);
-          this.game.physics.arcade.gravity.y = 500;
+          this.game.physics.arcade.gravity.y = 1200;
           // add the background sprite
           this.background = this.game.add.sprite(0,0,'background');
 
@@ -204,6 +211,18 @@ module.exports = Menu;
           // create and add a new Ground object
           this.ground = new Ground(this.game, 0, 400, 335, 112);
           this.game.add.existing(this.ground);
+
+          // keep the spacebar from propogating up to the browser
+          this.game.input.keyboard.addKeyCapture([Phaser.Keyboard.SPACEBAR]);
+
+          // add keyboard controls
+          var flapKey = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+          flapKey.onDown.add(this.bird.flap, this.bird);
+
+
+          // add mouse/touch controls
+          this.input.onDown.add(this.bird.flap, this.bird);
+
       },
       update: function() {
           this.game.physics.arcade.collide(this.bird, this.ground);

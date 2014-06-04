@@ -376,6 +376,9 @@ module.exports = Menu;
           this.ground = new Ground(this.game, 0, 400, 335, 112);
           this.game.add.existing(this.ground);
 
+          this.top = new Ground(this.game, 0, -10, this.game.width, 10);
+          this.game.add.existing(this.top);
+
           this.instructionGroup = this.game.add.group();
           this.instructionGroup.add(this.game.add.sprite(this.game.width/2, 100,'getReady'));
           this.instructionGroup.add(this.game.add.sprite(this.game.width/2, 325,'instructions'));
@@ -401,6 +404,8 @@ module.exports = Menu;
           this.scoreText.visible = false;
 
           this.scoreSound = this.game.add.audio('score');
+          this.pipeHitSound = this.game.add.audio('pipeHit');
+          this.groundHitSound = this.game.add.audio('groundHit');
       },
       startGame: function() {
           this.bird.body.allowGravity = true;
@@ -420,6 +425,14 @@ module.exports = Menu;
               pipeGroup = new PipeGroup(this.game, this.pipes);
           }
           pipeGroup.reset(this.game.width + pipeGroup.width/2, pipeY);
+      },
+      hitPipe: function() {
+          this.pipeHitSound.play();
+          this.deathHandler();
+      },
+      hitGround: function() {
+          this.groundHitSound.play();
+          this.deathHandler();
       },
       deathHandler: function() {
           this.bird.alive = false;
@@ -451,11 +464,12 @@ module.exports = Menu;
       update: function() {
           if (this.bird.alive) {
               // enable collisions between the bird and the ground
-              this.game.physics.arcade.collide(this.bird, this.ground, this.deathHandler, null, this);
+              this.game.physics.arcade.collide(this.bird, this.ground, this.hitGround, null, this);
+              this.game.physics.arcade.collide(this.bird, this.top, null, null, this);
               // enable collisions between the bird and each group in the pipes group
               this.pipes.forEach(function (pipeGroup) {
                   this.checkScore(pipeGroup);
-                  this.game.physics.arcade.collide(this.bird, pipeGroup, this.deathHandler, null, this);
+                  this.game.physics.arcade.collide(this.bird, pipeGroup, this.hitPipe, null, this);
               }, this);
           }
       }

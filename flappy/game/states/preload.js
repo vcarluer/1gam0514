@@ -8,8 +8,11 @@ function Preload() {
 
 Preload.prototype = {
   preload: function() {
-    this.asset = this.add.sprite(this.width/2,this.height/2, 'preloader');
+    this.asset = this.add.sprite(this.game.width/2, 0, 'preloader');
     this.asset.anchor.setTo(0.5, 0.5);
+	this.ga = this.add.sprite(this.game.width / 2, this.game.height / 2, 'ga334');
+	this.ga.anchor.setTo(0.5, 0.5);
+	this.game.stage.backgroundColor = "#ffffff";
 
     this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
     this.load.setPreloadSprite(this.asset);
@@ -42,7 +45,7 @@ Preload.prototype = {
   },
   update: function() {
     if(!!this.ready) {
-      this.game.state.start('menu');
+     this.game.state.start('menu');
     }
   },
   onLoadComplete: function() {

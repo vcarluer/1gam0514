@@ -19,7 +19,11 @@ var Scoreboard = function(game) {
     this.startButton = this.game.add.button(this.game.width/2, 300, 'startButton', this.startClick, this);
     this.startButton.anchor.setTo(0.5,0.5);
 
+	this.ga = this.game.add.button(this.game.width/2, 360, 'ga', this.gotoGA, this);
+	this.ga.anchor.setTo(0.5, 0);
+
     this.add(this.startButton);
+	this.add(this.ga);
 
     this.y = this.game.height;
     this.x = 0;
@@ -95,6 +99,10 @@ Scoreboard.prototype.show = function(score) {
 
 Scoreboard.prototype.startClick = function() {
     this.game.state.start('play');
+};
+
+Scoreboard.prototype.gotoGA = function() {
+	window.location = "http://www.gamersassociate.com";
 };
 
 module.exports = Scoreboard;

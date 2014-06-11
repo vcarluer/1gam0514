@@ -34,6 +34,8 @@ Preload.prototype = {
       this.load.image('gameover', 'assets/gameover.png');
       this.load.spritesheet('medals', 'assets/medals.png', 44, 46, 2);
       this.load.image('particle', 'assets/particle.png');
+
+	  this.load.image('ga', 'assets/ga111.png');
   },
   create: function() {
     this.asset.cropEnabled = false;
